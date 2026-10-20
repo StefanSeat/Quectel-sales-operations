@@ -313,3 +313,24 @@ footer .wrap { display: flex; justify-content: space-between; gap: 20px; flex-wr
   .steps { grid-template-columns: repeat(2, 1fr); }
   .block { padding: 44px 0; }
 }
+
+/* Forecast tool */
+.fc-controls { gap: 12px; }
+.fc-sep { width: 1px; height: 24px; background: var(--line); margin: 0 6px; }
+.fc-chips { display: flex; gap: 8px; flex-wrap: wrap; }
+.fc-input { font: inherit; font-size: 0.9rem; color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 4px; padding: 6px 8px; }
+.fc-input:focus { outline: 2px solid var(--red); outline-offset: -1px; border-color: var(--red); }
+#target { width: 140px; }
+.fc-text { width: 100%; min-width: 150px; }
+.fc-num { width: 120px; text-align: right; font-variant-numeric: tabular-nums; }
+.fc-small { width: 64px; }
+.fc-pct { display: inline-flex; align-items: center; gap: 4px; }
+.fc-table td { vertical-align: middle; padding: 8px 10px; }
+.fc-table tfoot td { background: var(--bg-alt); border-top: 1px solid var(--line); }
+.fc-del { border: 0; background: none; color: var(--ink-3); font-size: 1.3rem; line-height: 1; cursor: pointer; padding: 4px 8px; border-radius: 4px; }
+.fc-del:hover { color: var(--red); background: var(--red-soft); }
+.fc-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.tool-cta { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; margin-top: 44px; padding: 26px 28px; border-radius: var(--radius); background: var(--ink); color: #fff; }
+.tool-cta h3 { font-size: 1.3rem; margin-bottom: 4px; }
+.tool-cta p { margin: 0; color: #c9ccd1; font-size: 0.95rem; }
+.tag { white-space: nowrap; }

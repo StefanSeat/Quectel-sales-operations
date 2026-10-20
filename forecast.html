@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sales Forecast Tool</title>
+<meta name="description" content="Demo forecast tool: weighted sales forecast from CRM prospect amount and probability.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">S</span>
+      <span>Stefan <span class="sub">· Sales Operations EMEA</span></span>
+    </a>
+    <nav class="top-links">
+      <a href="index.html">← Back to the plan</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Demo tool</div>
+    <h1>Sales <em>forecast</em> from CRM prospects</h1>
+    <p class="lead">Each prospect has an amount and a probability. The forecast is the sum of amount × probability, compared with the target. Change any number in the table and everything updates.</p>
+    <p class="disclaimer">Fictional prospects. Your changes are kept in this browser only.</p>
+  </div>
+</section>
+
+<main>
+<section class="block">
+  <div class="wrap">
+
+    <div class="filters fc-controls">
+      <label for="target">Target per quarter (USD)</label>
+      <input id="target" class="fc-input" type="number" min="0" step="50000" inputmode="numeric">
+      <span class="fc-sep"></span>
+      <label>Quarter</label>
+      <div id="q-chips" class="fc-chips"></div>
+    </div>
+
+    <div class="kpis" id="fc-kpis"></div>
+
+    <div class="grid-2">
+      <div class="chart-card">
+        <h3>Three ways to read the forecast</h3>
+        <div class="sub" id="scen-sub">Selected period vs target</div>
+        <div class="legend"><span><i class="red"></i>Forecast</span><span><i class="dash"></i>Target</span></div>
+        <div class="chart" id="chart-scen"></div>
+      </div>
+      <div class="chart-card">
+        <h3>Weighted forecast by quarter</h3>
+        <div class="sub">Amount × probability, closing in each quarter</div>
+        <div class="legend"><span><i class="red"></i>Weighted forecast</span><span><i class="dash"></i>Target</span></div>
+        <div class="chart" id="chart-q"></div>
+      </div>
+    </div>
+
+    <div class="section-head" style="margin-top:48px">
+      <div>
+        <h2 style="font-size:1.6rem">Prospects</h2>
+        <p>Changing the stage sets its standard probability. You can still type your own probability if you know the deal better.</p>
+      </div>
+      <div class="fc-actions">
+        <button class="btn btn-ghost btn-sm" id="add">+ Add prospect</button>
+        <button class="btn btn-ghost btn-sm" id="csv">Download CSV</button>
+        <button class="btn btn-ghost btn-sm" id="reset">Reset demo</button>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table class="fc-table">
+        <thead><tr>
+          <th>Account</th><th>Product</th><th>Stage</th><th class="r">Amount (USD)</th><th class="r">Probability</th>
+          <th>Close</th><th class="r">Weighted</th><th>Category</th><th></th>
+        </tr></thead>
+        <tbody id="rows"></tbody>
+        <tfoot id="foot"></tfoot>
+      </table>
+    </div>
+
+    <div class="grid-3" style="margin-top:40px">
+      <div class="card alt"><span class="tag good">Commit</span><h3>70% or higher</h3><p class="small">Design-win or later. The number the region stands behind.</p></div>
+      <div class="card alt"><span class="tag warn">Best case</span><h3>40% to 69%</h3><p class="small">Design-in running. Could close this period if things go well.</p></div>
+      <div class="card alt"><span class="tag">Pipeline</span><h3>Below 40%</h3><p class="small">Early stage. Counts toward coverage, not toward the committed number.</p></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Stefan · Sales Operations EMEA · portfolio</span>
+    <span>Not affiliated with Quectel. Example data is fictional.</span>
+  </div>
+</footer>
+
+<div class="tooltip" id="tooltip" role="status"></div>
+<script src="assets/forecast.js"></script>
+</body>
+</html>
