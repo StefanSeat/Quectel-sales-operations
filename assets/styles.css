@@ -276,3 +276,40 @@ footer .wrap { display: flex; justify-content: space-between; gap: 20px; flex-wr
   .tile .icon { width: 84px; height: 84px; }
 }
 .chart text.num { paint-order: stroke; stroke: #fff; stroke-width: 4px; stroke-linejoin: round; }
+
+/* One-page layout */
+.top-links { display: flex; gap: 22px; }
+.top-links a { color: var(--ink); font-size: 0.95rem; }
+.top-links a:hover { color: var(--red); }
+.hero { padding: 64px 0 48px; }
+.block { padding: 64px 0; scroll-margin-top: 64px; }
+.block.alt { background: var(--bg-alt); }
+.table-wrap.bg { background: var(--bg); }
+.tiles-4 { grid-template-columns: repeat(4, 1fr); }
+.tiles-4 .tile h3 { font-size: 1.45rem; }
+.tiles-4 .list { padding-left: 16px; }
+.rhythm-card { border-top: 4px solid var(--red); }
+.rhythm-card .when { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--red); font-weight: 600; margin-bottom: 6px; }
+.sub-title { font-size: 1.3rem; margin: 44px 0 14px; }
+.sub-title:first-of-type { margin-top: 8px; }
+.steps { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; margin-top: 16px; }
+.stp { background: var(--tile); border-radius: 4px; padding: 14px 12px; }
+.stp .p { color: var(--red); font-weight: 600; font-size: 0.85rem; display: block; }
+.stp strong { display: block; font-weight: 600; font-size: 0.95rem; line-height: 1.25; margin: 4px 0 6px; }
+.stp > span:last-child { font-size: 0.8rem; color: var(--ink-2); line-height: 1.35; display: block; }
+.kpis-4 { grid-template-columns: repeat(4, 1fr); }
+.fit td:first-child { font-weight: 500; width: 42%; }
+@media (max-width: 1000px) {
+  .tiles-4 { grid-template-columns: repeat(2, 1fr); }
+  .steps { grid-template-columns: repeat(4, 1fr); }
+  .kpis-4 { grid-template-columns: repeat(2, 1fr); }
+  .kpis-4 .kpi:nth-child(2) { border-right: 0; }
+  .kpis-4 .kpi:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+  .kpis-4 .kpi:nth-child(3) { border-right: 1px solid var(--line); }
+}
+@media (max-width: 720px) {
+  .top-links { display: none; }
+  .tiles-4 { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: repeat(2, 1fr); }
+  .block { padding: 44px 0; }
+}

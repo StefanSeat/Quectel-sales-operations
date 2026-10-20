@@ -6,15 +6,13 @@ How I would organize, track and support an EMEA sales organization in the IoT ce
 
 ## What is inside
 
-| Section | What it shows |
-|---|---|
-| Overview | 90 day plan and working principles |
-| Organization | Regional structure, Sales Ops as a hub, RACI, operating rhythm |
-| Pipeline & CRM | Design-in based stage model with exit criteria, CRM object model, value logic, lead routing |
-| Data quality | Six weekly checks, completeness scorecard by region, correction loop, issue list |
-| Forecast & KPIs | Live dashboard with region filter, forecast categories, KPI definitions |
-| Tradeshows | Post-event funnel, cost per qualified lead, pipeline per EUR, event checklist |
-| Enablement | Handbook structure, follow-up template, improvement log, downloads |
+One page, built around the job description:
+
+1. **The role:** CRM and data quality, pipeline and forecast, standards and training, reporting and KPIs
+2. **How I would work:** weekly, monthly and quarterly rhythm
+3. **Examples:** design-in pipeline stages, weekly data quality check, tradeshow follow-up analysis
+4. **Requirements:** each job requirement and where the page shows it
+5. **First 90 days:** learn, standardize, improve
 
 ## Files
 
