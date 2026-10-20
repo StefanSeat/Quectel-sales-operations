@@ -1,0 +1,730 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EMEA Sales Ops Playbook</title>
+<meta name="description" content="How I would organize, track and support an EMEA sales organization in the IoT module business. Personal portfolio with a fictional demo dataset.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-org" viewBox="0 0 48 48" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="18" y="5" width="12" height="9" rx="1.5" stroke="#e2231a"/>
+      <path d="M24 14v8M10 22h28M10 22v6M24 22v6M38 22v6" stroke="#111"/>
+      <rect x="4" y="28" width="12" height="9" rx="1.5" stroke="#111"/>
+      <rect x="18" y="28" width="12" height="9" rx="1.5" stroke="#e2231a"/>
+      <rect x="32" y="28" width="12" height="9" rx="1.5" stroke="#111"/>
+      <path d="M8 42h4M22 42h4M36 42h4" stroke="#e2231a"/>
+    </symbol>
+    <symbol id="i-pipeline" viewBox="0 0 48 48" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 8h38l-13 15v12l-12 6V23L5 8z" stroke="#111"/>
+      <path d="M11 13h26M16 18h16" stroke="#e2231a"/>
+    </symbol>
+    <symbol id="i-quality" viewBox="0 0 48 48" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="22" cy="10" rx="14" ry="5" stroke="#111"/>
+      <path d="M8 10v22c0 2.8 6.3 5 14 5M36 10v10" stroke="#111"/>
+      <path d="M8 21c0 2.8 6.3 5 14 5" stroke="#111"/>
+      <circle cx="35" cy="34" r="8" stroke="#e2231a"/>
+      <path d="M31.5 34l2.5 2.5 5-5" stroke="#e2231a"/>
+    </symbol>
+    <symbol id="i-forecast" viewBox="0 0 48 48" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M6 6v36h36" stroke="#111"/>
+      <path d="M12 34V26M20 34V20M28 34V24" stroke="#111"/>
+      <path d="M12 18l8-6 8 5 12-9" stroke="#e2231a"/>
+      <path d="M36 34V16" stroke="#e2231a" stroke-dasharray="3 3"/>
+    </symbol>
+    <symbol id="i-show" viewBox="0 0 48 48" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M6 18h36v22H6z" stroke="#111"/>
+      <path d="M4 18l6-10h28l6 10" stroke="#e2231a"/>
+      <path d="M18 40V28h12v12" stroke="#111"/>
+      <path d="M12 24h2M34 24h2" stroke="#e2231a"/>
+    </symbol>
+    <symbol id="i-train" viewBox="0 0 48 48" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="6" y="8" width="36" height="24" rx="2" stroke="#111"/>
+      <path d="M14 40l6-8M34 40l-6-8" stroke="#111"/>
+      <path d="M13 16h14M13 23h22" stroke="#e2231a"/>
+    </symbol>
+    <symbol id="i-xls" viewBox="0 0 48 48" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 4h18l10 10v30H12z" stroke="#111"/>
+      <path d="M30 4v10h10" stroke="#111"/>
+      <path d="M19 24l10 12M29 24L19 36" stroke="#e2231a"/>
+    </symbol>
+    <symbol id="i-csv" viewBox="0 0 48 48" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 4h18l10 10v30H12z" stroke="#111"/>
+      <path d="M30 4v10h10" stroke="#111"/>
+      <path d="M18 24h16M18 30h16M18 36h10" stroke="#e2231a"/>
+    </symbol>
+    <symbol id="i-doc" viewBox="0 0 48 48" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M10 6h20l8 8v28H10z" stroke="#111"/>
+      <path d="M16 20h16M16 27h16M16 34h10" stroke="#e2231a"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#overview" data-go="overview">
+      <span class="brand-mark">S</span>
+      <span>Stefan <span class="sub">· Sales Ops Playbook EMEA</span></span>
+    </a>
+    <div class="top-actions">
+      <a class="btn btn-ghost btn-sm" href="data/EMEA_Sales_Ops_Toolkit.xlsx" download>Excel toolkit</a>
+      <button class="btn btn-red btn-sm" data-go="dashboard">Open dashboard</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Sales Operations Executive · EMEA</div>
+    <h1>How I would organize and run <em>sales operations</em> for an IoT module business</h1>
+    <p class="lead">A working playbook: team structure, CRM and pipeline rules built around the design-in cycle, data quality control, forecasting cadence, tradeshow analysis and enablement. Everything below runs on a fictional dataset of 246 EMEA opportunities so you can see the method, not just read about it.</p>
+    <div class="hero-actions">
+      <button class="btn btn-red" data-go="dashboard">See the live dashboard</button>
+      <button class="btn btn-ghost" data-go="organization">Start with the organization</button>
+    </div>
+    <div class="hero-stats">
+      <div><strong class="num" id="hs-opps">246</strong><span>opportunities tracked</span></div>
+      <div><strong>7</strong><span>EMEA sub-regions</span></div>
+      <div><strong>7</strong><span>pipeline stages, design-in based</span></div>
+      <div><strong>6</strong><span>automated data quality checks</span></div>
+    </div>
+    <p class="disclaimer">Personal portfolio prepared for a job application. Not affiliated with or endorsed by Quectel Wireless Solutions. All companies, people and figures are fictional.</p>
+  </div>
+</section>
+
+<nav class="tabs-bar" aria-label="Sections">
+  <div class="wrap">
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" data-tab="overview">Overview</button>
+      <button class="tab" role="tab" data-tab="organization">Organization</button>
+      <button class="tab" role="tab" data-tab="pipeline">Pipeline &amp; CRM</button>
+      <button class="tab" role="tab" data-tab="quality">Data quality</button>
+      <button class="tab" role="tab" data-tab="dashboard">Forecast &amp; KPIs</button>
+      <button class="tab" role="tab" data-tab="tradeshows">Tradeshows</button>
+      <button class="tab" role="tab" data-tab="enablement">Enablement</button>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+<!-- OVERVIEW -->
+<section class="panel" id="overview" role="tabpanel">
+  <div class="wrap">
+    <div class="section">
+      <div class="tiles">
+        <div class="tile">
+          <div class="icon"><svg><use href="#i-org"/></svg></div>
+          <h3>Sales<br>organization</h3>
+          <p>Regional structure, who owns what, and the weekly to yearly rhythm that keeps EMEA aligned.</p>
+          <button class="read-more" data-go="organization">Read more</button>
+        </div>
+        <div class="tile">
+          <div class="icon"><svg><use href="#i-pipeline"/></svg></div>
+          <h3>Pipeline<br>&amp; CRM</h3>
+          <p>A stage model that follows how modules are really sold: samples, design-in, design-win, mass production.</p>
+          <button class="read-more" data-go="pipeline">Read more</button>
+        </div>
+        <div class="tile">
+          <div class="icon"><svg><use href="#i-quality"/></svg></div>
+          <h3>Data<br>quality</h3>
+          <p>Rules, automated checks and a correction loop so the CRM can be trusted for decisions.</p>
+          <button class="read-more" data-go="quality">Read more</button>
+        </div>
+        <div class="tile">
+          <div class="icon"><svg><use href="#i-forecast"/></svg></div>
+          <h3>Forecast<br>&amp; KPIs</h3>
+          <p>Live dashboard: coverage, conversion, forecast accuracy and pipeline health by region.</p>
+          <button class="read-more" data-go="dashboard">Read more</button>
+        </div>
+        <div class="tile">
+          <div class="icon"><svg><use href="#i-show"/></svg></div>
+          <h3>Tradeshow<br>analysis</h3>
+          <p>From badge scans to pipeline: measuring Embedded World, MWC and others the same way every time.</p>
+          <button class="read-more" data-go="tradeshows">Read more</button>
+        </div>
+        <div class="tile">
+          <div class="icon"><svg><use href="#i-train"/></svg></div>
+          <h3>Enablement<br>&amp; training</h3>
+          <p>SOPs, cheat sheets, templates and an improvement log. Tools that sales actually uses.</p>
+          <button class="read-more" data-go="enablement">Read more</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head">
+        <div>
+          <div class="kicker">First 90 days</div>
+          <h2>Listen, standardize, then scale</h2>
+          <p>Before changing anything, understand how the team sells today. Fix data and rules next, then automate and train.</p>
+        </div>
+      </div>
+      <div class="plan">
+        <div class="step">
+          <div class="day">Days 1 to 30</div>
+          <h3>Audit and learn</h3>
+          <ul class="list">
+            <li>Meet each regional sales lead, FAE and the Finance contact</li>
+            <li>Map the current sales process and CRM objects end to end</li>
+            <li>Run a baseline data quality scan per region and owner</li>
+            <li>Collect the existing reports and who uses which one</li>
+            <li>List the top 10 pain points, ranked by impact</li>
+          </ul>
+        </div>
+        <div class="step">
+          <div class="day">Days 31 to 60</div>
+          <h3>Standardize</h3>
+          <ul class="list">
+            <li>Agree stage definitions and exit criteria with Sales leadership</li>
+            <li>Set required fields and validation rules per stage</li>
+            <li>Launch the weekly data quality report and correction loop</li>
+            <li>Align forecast categories and the monthly forecast calendar</li>
+            <li>Clean duplicates on the top 100 accounts</li>
+          </ul>
+        </div>
+        <div class="step">
+          <div class="day">Days 61 to 90</div>
+          <h3>Scale and train</h3>
+          <ul class="list">
+            <li>Publish the EMEA Sales Ops handbook and SOPs</li>
+            <li>Run CRM training per region (short, recorded, with a quiz)</li>
+            <li>Release the management dashboard with agreed KPIs</li>
+            <li>First forecast accuracy review and process retro</li>
+            <li>Agree the improvement backlog for the next quarter</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Principles</div>
+          <h2>How I work</h2>
+        </div>
+      </div>
+      <div class="grid-4">
+        <div class="card alt"><h3>One source of truth</h3><p class="small">If it is not in the CRM, it did not happen. Reports come from the CRM, not from private spreadsheets.</p></div>
+        <div class="card alt"><h3>Make the right way the easy way</h3><p class="small">Fewer fields, smart defaults, clear rules. Sales should spend time with customers, not with forms.</p></div>
+        <div class="card alt"><h3>Measure, then improve</h3><p class="small">Every process change has a baseline and a target, and gets reviewed after one quarter.</p></div>
+        <div class="card alt"><h3>Service mindset</h3><p class="small">Sales Ops exists to help sellers win. Follow up politely, explain the why, give credit to regions that improve.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ORGANIZATION -->
+<section class="panel" id="organization" role="tabpanel" hidden>
+  <div class="wrap">
+    <div class="section">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Structure</div>
+          <h2>EMEA sales organization</h2>
+          <p>Regional sales teams own customers. Field application engineers own the technical design-in. Sales Operations sits in the middle and owns data, process, reporting and the forecast calendar.</p>
+        </div>
+      </div>
+      <div class="org">
+        <div class="org-row"><div class="org-node lead"><strong>EMEA Sales Director</strong><span>targets, priorities, forecast sign-off</span></div></div>
+        <div class="org-connector"></div>
+        <div class="org-row">
+          <div class="org-node"><strong>DACH</strong><span>Key accounts + distribution</span></div>
+          <div class="org-node"><strong>UK &amp; Ireland</strong><span>Key accounts + distribution</span></div>
+          <div class="org-node"><strong>France &amp; Benelux</strong><span>Key accounts + distribution</span></div>
+          <div class="org-node"><strong>Southern Europe</strong><span>Key accounts + distribution</span></div>
+          <div class="org-node"><strong>Nordics</strong><span>Key accounts + distribution</span></div>
+          <div class="org-node"><strong>CEE</strong><span>Key accounts + distribution</span></div>
+          <div class="org-node"><strong>Middle East &amp; Africa</strong><span>Key accounts + distribution</span></div>
+        </div>
+        <div class="org-connector"></div>
+        <div class="org-row">
+          <div class="org-node"><strong>Field Application Engineers</strong><span>samples, design-in support</span></div>
+          <div class="org-node ops"><strong>Sales Operations</strong><span>CRM, data, forecast, reporting</span></div>
+          <div class="org-node"><strong>Inside Sales</strong><span>lead qualification, tradeshow follow-up</span></div>
+          <div class="org-node"><strong>Distribution Management</strong><span>partner pipeline and POS data</span></div>
+        </div>
+        <p class="org-caption">Illustrative structure based on the EMEA sub-regions used in the demo data.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Sales Ops as a hub</div>
+          <h2>Who Sales Ops works with, and what flows between them</h2>
+        </div>
+      </div>
+      <div class="hub">
+        <div class="hub-col">
+          <div class="hub-item"><strong>Sales (regions)</strong><span>opportunity updates, forecast input, account plans</span></div>
+          <div class="hub-item"><strong>Field Application Engineers</strong><span>sample requests, design-in status, technical blockers</span></div>
+          <div class="hub-item"><strong>Marketing</strong><span>tradeshow leads, campaign source, lead routing</span></div>
+        </div>
+        <div class="hub-core"><div>Sales Operations<small>process · data · reporting</small></div></div>
+        <div class="hub-col">
+          <div class="hub-item"><strong>Finance</strong><span>shipments, revenue actuals, pricing approvals</span></div>
+          <div class="hub-item"><strong>IT / CRM admin</strong><span>fields, validation rules, integrations, access</span></div>
+          <div class="hub-item"><strong>Management</strong><span>dashboards, forecast summary, risks and decisions</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Ownership</div>
+          <h2>RACI for core sales processes</h2>
+          <p><b class="R" style="color:var(--red)">R</b> responsible · <b>A</b> accountable · C consulted · I informed</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="raci">
+          <thead><tr><th>Process</th><th class="r">Sales rep</th><th class="r">Regional lead</th><th class="r">Sales Ops</th><th class="r">FAE</th><th class="r">Finance</th><th class="r">IT</th></tr></thead>
+          <tbody>
+            <tr><td>Create and update opportunities</td><td class="c R">R</td><td class="c A">A</td><td class="c C">C</td><td class="c C">C</td><td class="c I">I</td><td class="c I">I</td></tr>
+            <tr><td>Data quality rules and monitoring</td><td class="c C">C</td><td class="c I">I</td><td class="c R A">A/R</td><td class="c I">I</td><td class="c I">I</td><td class="c C">C</td></tr>
+            <tr><td>Fixing flagged records</td><td class="c R">R</td><td class="c A">A</td><td class="c C">C</td><td class="c I">I</td><td class="c I">I</td><td class="c I">I</td></tr>
+            <tr><td>Monthly forecast submission</td><td class="c R">R</td><td class="c A">A</td><td class="c C">C</td><td class="c I">I</td><td class="c C">C</td><td class="c I">I</td></tr>
+            <tr><td>Forecast consolidation and reporting</td><td class="c I">I</td><td class="c C">C</td><td class="c R">R</td><td class="c I">I</td><td class="c C">C</td><td class="c I">I</td></tr>
+            <tr><td>Design-in status and sample tracking</td><td class="c C">C</td><td class="c I">I</td><td class="c C">C</td><td class="c R">R</td><td class="c I">I</td><td class="c I">I</td></tr>
+            <tr><td>CRM fields, workflows, validation rules</td><td class="c I">I</td><td class="c C">C</td><td class="c A">A</td><td class="c I">I</td><td class="c I">I</td><td class="c R">R</td></tr>
+            <tr><td>Shipments and revenue actuals</td><td class="c I">I</td><td class="c I">I</td><td class="c C">C</td><td class="c I">I</td><td class="c R">R</td><td class="c I">I</td></tr>
+            <tr><td>Tradeshow lead capture and analysis</td><td class="c C">C</td><td class="c I">I</td><td class="c R">R</td><td class="c C">C</td><td class="c I">I</td><td class="c I">I</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Operating rhythm</div>
+          <h2>A calendar everyone can plan around</h2>
+          <p>Fixed dates remove the chasing. Regions know when input is due, and management knows when numbers are final.</p>
+        </div>
+      </div>
+      <div class="rhythm">
+        <div class="card">
+          <div class="when">Weekly · Monday</div>
+          <h3>Pipeline hygiene</h3>
+          <ul class="small">
+            <li>Data quality report to each owner</li>
+            <li>Stale and past-due opportunities list</li>
+            <li>New design-wins and losses review</li>
+            <li>Action item tracker update</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="when">Monthly · week 2</div>
+          <h3>Forecast cycle</h3>
+          <ul class="small">
+            <li>Day 1: forecast window opens</li>
+            <li>Day 3: regional submissions due</li>
+            <li>Day 4: Sales Ops consolidation and gap follow-up</li>
+            <li>Day 5: management review and sign-off</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="when">Quarterly</div>
+          <h3>Business review</h3>
+          <ul class="small">
+            <li>Forecast accuracy by region</li>
+            <li>Win/loss and conversion analysis</li>
+            <li>Tradeshow ROI summary</li>
+            <li>Process retro and improvement backlog</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="when">Yearly</div>
+          <h3>Planning</h3>
+          <ul class="small">
+            <li>Targets and territory split</li>
+            <li>Account segmentation (key, growth, distribution)</li>
+            <li>Tradeshow calendar and budget</li>
+            <li>CRM roadmap with IT</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PIPELINE -->
+<section class="panel" id="pipeline" role="tabpanel" hidden>
+  <div class="wrap">
+    <div class="section">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Stage model</div>
+          <h2>Stages that match the design-in cycle</h2>
+          <p>Module revenue arrives months after the decision: the customer designs the module into their device, certifies it, then ramps production. Stages must show where a project is in that journey. Click a stage to see its rules.</p>
+        </div>
+      </div>
+      <div class="stages" id="stages"></div>
+      <div class="stage-detail" id="stage-detail"></div>
+    </div>
+
+    <div class="section">
+      <div class="section-head">
+        <div>
+          <div class="kicker">CRM object model</div>
+          <h2>Account, project, opportunity, shipment</h2>
+          <p>One customer device often uses several modules (cellular, GNSS, Wi-Fi, antenna). Tracking a <b>Project</b> between Account and Opportunity keeps those linked and makes cross-selling visible.</p>
+        </div>
+      </div>
+      <div class="object-model">
+        <div class="object"><span class="tag">Object 1</span><strong>Account</strong><p>The customer company. Owner, region, segment, distributor, parent account. One record per legal entity, no duplicates.</p></div>
+        <div class="object key"><span class="tag red">Object 2</span><strong>Project</strong><p>The customer's end device (for example a smart meter). Application, vertical, target launch date, lifetime volume.</p></div>
+        <div class="object"><span class="tag">Object 3</span><strong>Opportunity</strong><p>One module family for one project. Stage, annual units, price, close date, next action, competitor.</p></div>
+        <div class="object"><span class="tag">Object 4</span><strong>Shipment / Revenue</strong><p>Actual units and revenue from Finance or ERP, linked back to the project to measure forecast accuracy.</p></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Value</div>
+          <h2>How opportunity value is calculated</h2>
+        </div>
+      </div>
+      <div class="grid-3">
+        <div class="card alt"><h3>Annual value</h3><p>Annual units × average selling price.</p><p class="small muted">Used for pipeline coverage against the yearly target.</p></div>
+        <div class="card alt"><h3>Lifetime value</h3><p>Annual value × project life in years.</p><p class="small muted">Used to prioritize design-in support and FAE time.</p></div>
+        <div class="card alt"><h3>Weighted value</h3><p>Value × stage probability.</p><p class="small muted">Used as a sanity check against the rep's own forecast category.</p></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Lead routing</div>
+          <h2>Where a new lead goes</h2>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Lead type</th><th>Rule</th><th>Owner</th><th>Response time</th></tr></thead>
+          <tbody>
+            <tr><td>Existing key account</td><td>Match on account domain or VAT number</td><td>Account owner</td><td>1 working day</td></tr>
+            <tr><td>New company, expected volume above 50k units/year</td><td>Route by country to regional key account manager</td><td>Regional sales</td><td>2 working days</td></tr>
+            <tr><td>New company, smaller volume</td><td>Route to the authorized distributor for that country</td><td>Distribution manager</td><td>3 working days</td></tr>
+            <tr><td>Tradeshow scan</td><td>Inside Sales qualifies first, then routes using the rules above</td><td>Inside Sales</td><td>5 working days after the event</td></tr>
+            <tr><td>Technical question only</td><td>Route to FAE queue, create lead if a project is mentioned</td><td>FAE</td><td>2 working days</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DATA QUALITY -->
+<section class="panel" id="quality" role="tabpanel" hidden>
+  <div class="wrap">
+    <div class="section">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Rules</div>
+          <h2>Six checks that run every week</h2>
+          <p>Each rule has a reason, an owner and a deadline. The same checks are built as formulas in the Excel toolkit and would become CRM validation rules or reports.</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Check</th><th>Why it matters</th><th>Fix owner</th><th>Fix within</th><th class="r">Found in demo data</th></tr></thead>
+          <tbody id="rules-body"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Scorecard</div>
+          <h2>Completeness by region</h2>
+          <p>Share of records with no open issue. Target is 95%. Shared openly with all regions every Monday, framed as progress, not blame.</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Region</th><th class="r">Records</th><th class="r">With issues</th><th>Completeness</th><th class="r">Stale</th><th class="r">Past close date</th><th class="r">Duplicates</th><th>Status</th></tr></thead>
+          <tbody id="dq-body"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Correction loop</div>
+          <h2>From flag to fixed in five working days</h2>
+        </div>
+      </div>
+      <div class="loop">
+        <div class="s"><strong>Detect</strong><p>Automated checks run Monday morning on all open records.</p></div>
+        <div class="s"><strong>Notify</strong><p>Each owner gets only their own list, with a direct link to each record.</p></div>
+        <div class="s"><strong>Fix</strong><p>Owner corrects within 5 working days. Sales Ops helps with bulk fixes and merges.</p></div>
+        <div class="s"><strong>Escalate</strong><p>Still open after 5 days: regional lead is copied. After 10 days: Sales Director review.</p></div>
+        <div class="s"><strong>Prevent</strong><p>Recurring issues become a validation rule, a default value or a training topic.</p></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Issue list</div>
+          <h2>Records to fix this week</h2>
+          <p>Sorted by value, so the biggest risks to the forecast are fixed first.</p>
+        </div>
+        <div class="filters" id="dq-filters" style="margin:0"></div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>ID</th><th>Account</th><th>Owner</th><th>Stage</th><th class="r">Annual value</th><th class="r">Days since update</th><th>Issues</th></tr></thead>
+          <tbody id="issues-body"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DASHBOARD -->
+<section class="panel" id="dashboard" role="tabpanel" hidden>
+  <div class="wrap">
+    <div class="section">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Live demo</div>
+          <h2>EMEA pipeline and forecast dashboard</h2>
+          <p>Built from the demo CRM export. Use the region filter to see how each team looks.</p>
+        </div>
+      </div>
+      <div class="filters" id="region-filters"><label>Region</label></div>
+      <div class="kpis" id="kpis"></div>
+      <div class="grid-2">
+        <div class="chart-card">
+          <h3>Open pipeline by stage</h3>
+          <div class="sub">Annual value, million USD</div>
+          <div class="chart" id="chart-stage"></div>
+        </div>
+        <div class="chart-card">
+          <h3>Pipeline coverage by region</h3>
+          <div class="sub">Open annual pipeline ÷ annual target</div>
+          <div class="legend"><span><i class="red"></i>Coverage</span><span><i class="dash"></i>3× rule of thumb</span></div>
+          <div class="chart" id="chart-coverage"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="grid-2">
+        <div class="chart-card">
+          <h3>Forecast vs actual revenue, EMEA</h3>
+          <div class="sub">Million USD per quarter</div>
+          <div class="legend"><span><i class="outline"></i>Forecast</span><span><i class="red"></i>Actual</span></div>
+          <div class="chart" id="chart-forecast"></div>
+        </div>
+        <div class="chart-card">
+          <h3>Stage conversion</h3>
+          <div class="sub">Share of opportunities that reached each stage and moved on</div>
+          <div class="chart" id="chart-conversion"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Forecast method</div>
+          <h2>Three categories, one calendar</h2>
+          <p>Reps call the number, the stage model checks it. If a rep's Commit is far from the weighted pipeline, that is a conversation, not an error.</p>
+        </div>
+      </div>
+      <div class="grid-3">
+        <div class="card"><span class="tag good">Commit</span><h3>90% or higher confidence</h3><p class="small">Design-win confirmed, purchase order expected or received, volumes agreed. Rep is accountable for this number.</p></div>
+        <div class="card"><span class="tag warn">Best case</span><h3>Possible this period</h3><p class="small">Design-in or pilot running, customer timeline realistic, one or two open risks named in the record.</p></div>
+        <div class="card"><span class="tag">Pipeline</span><h3>Not this period</h3><p class="small">Early stage or timeline unclear. Tracked for coverage and future quarters, never added to the forecast.</p></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Definitions</div>
+          <h2>KPIs I would track</h2>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>KPI</th><th>Formula</th><th>Target</th><th>Frequency</th></tr></thead>
+          <tbody>
+            <tr><td>Pipeline coverage</td><td>Open annual pipeline ÷ remaining annual target</td><td>≥ 3×</td><td>Weekly</td></tr>
+            <tr><td>Forecast accuracy</td><td>1 − |actual − forecast| ÷ forecast</td><td>≥ 90%</td><td>Monthly / quarterly</td></tr>
+            <tr><td>Win rate</td><td>Mass production ÷ (mass production + lost)</td><td>Track trend</td><td>Quarterly</td></tr>
+            <tr><td>Design-in to production lag</td><td>Days from design-win to first mass production order</td><td>Track by vertical</td><td>Quarterly</td></tr>
+            <tr><td>Data completeness</td><td>Records with no open issue ÷ all records</td><td>≥ 95%</td><td>Weekly</td></tr>
+            <tr><td>Stale opportunities</td><td>Open records not updated in 30+ days</td><td>&lt; 5%</td><td>Weekly</td></tr>
+            <tr><td>Forecast submitted on time</td><td>Regions submitted by day 3 ÷ all regions</td><td>100%</td><td>Monthly</td></tr>
+            <tr><td>Tradeshow pipeline per EUR</td><td>Pipeline created within 90 days ÷ event cost</td><td>Compare events</td><td>Per event</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRADESHOWS -->
+<section class="panel" id="tradeshows" role="tabpanel" hidden>
+  <div class="wrap">
+    <div class="section">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Post-event analysis</div>
+          <h2>Comparing EMEA tradeshows on the same funnel</h2>
+          <p>Every event is measured 90 days after it ends: how many scans became qualified leads, opportunities and pipeline, and what that cost.</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Event</th><th>Date</th><th class="r">Cost (EUR)</th><th class="r">Leads</th><th class="r">Qualified</th><th class="r">Opps</th><th class="r">Pipeline (USD)</th><th class="r">Lead → qualified</th><th class="r">Cost / qualified lead</th><th class="r">Pipeline per EUR</th></tr></thead>
+          <tbody id="shows-body"></tbody>
+        </table>
+      </div>
+      <p class="small muted" style="margin-top:10px">Event names are real industry fairs. All numbers are fictional.</p>
+    </div>
+
+    <div class="section">
+      <div class="grid-2">
+        <div class="chart-card">
+          <h3>Pipeline created per EUR spent</h3>
+          <div class="sub">USD of pipeline per 1 EUR of event cost, 90 days after the event</div>
+          <div class="chart" id="chart-shows"></div>
+        </div>
+        <div class="card alt">
+          <h3>What the data says (demo)</h3>
+          <ul>
+            <li><b>Embedded World</b> creates the most pipeline and the best return. Keep it as the main EMEA event.</li>
+            <li><b>MWC</b> is expensive per qualified lead. It is a brand and partner event more than a lead event, so measure it on meetings, not only leads.</li>
+            <li><b>IoT Tech Expo</b> is cheap but low conversion. Test a smaller booth with pre-booked meetings only.</li>
+            <li>Follow-up speed matters: leads contacted within 5 days convert far better than leads contacted after 2 weeks.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Checklist</div>
+          <h2>Before, during and after every event</h2>
+        </div>
+      </div>
+      <div class="grid-3">
+        <div class="card"><span class="tag">Before</span><h3>Set it up to be measured</h3><ul class="small"><li>Goals: meetings, qualified leads, pipeline</li><li>Target account list shared with regions</li><li>CRM campaign created, scan app linked to it</li><li>Pre-booked meetings logged as activities</li></ul></div>
+        <div class="card"><span class="tag">During</span><h3>Capture properly</h3><ul class="small"><li>Every scan gets a quick note: project, volume, timeline</li><li>Hot leads flagged on the same day</li><li>Daily lead count shared with the team</li><li>Competitor and market notes collected</li></ul></div>
+        <div class="card"><span class="tag red">After</span><h3>Follow up and report</h3><ul class="small"><li>Leads imported and de-duplicated within 2 days</li><li>Routed and first contact within 5 days</li><li>30-day status check on follow-up rate</li><li>90-day report: funnel, pipeline, cost, lessons</li></ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ENABLEMENT -->
+<section class="panel" id="enablement" role="tabpanel" hidden>
+  <div class="wrap">
+    <div class="section">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Documentation</div>
+          <h2>The EMEA Sales Ops handbook</h2>
+          <p>Short documents, one topic each, written for a seller with 10 minutes. Stored in one place and linked from the CRM.</p>
+        </div>
+      </div>
+      <div class="grid-3">
+        <div class="card"><h3>SOPs</h3><ul class="small"><li>Creating a lead, account and project</li><li>Moving an opportunity through stages</li><li>Logging samples and design-in status</li><li>Submitting the monthly forecast</li><li>Merging duplicate accounts</li></ul></div>
+        <div class="card"><h3>Cheat sheets</h3><ul class="small"><li>Stage definitions on one page</li><li>Required fields per stage</li><li>Forecast categories and the calendar</li><li>Which report answers which question</li></ul></div>
+        <div class="card"><h3>Training plan</h3><ul class="small"><li>New joiner: 2 × 45 min CRM onboarding</li><li>Quarterly: 30 min refresh on what changed</li><li>Per region: live session with real records</li><li>Recordings and a 5 question quiz</li></ul></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Template</div>
+          <h2>Follow-up message for missing forecast data</h2>
+          <p>Short, specific and easy to act on. Works across cultures and languages.</p>
+        </div>
+      </div>
+      <div class="template">Subject: Forecast close on Thursday, 3 records need a quick update
+
+Hi Marco,
+
+Thanks for the updates last week. Before the forecast closes on Thursday at 12:00 CET, could you check these 3 opportunities?
+
+1. OPP-26114, Iberix Telematics: close date is in the past. New expected date?
+2. OPP-26087, Atlas Devices: annual units missing.
+3. OPP-26203, Helix Energy: no update for 41 days. Is the pilot still running?
+
+Each link opens the record directly. If any of these are lost, just set the stage to Lost with a reason.
+
+Thanks a lot,
+Stefan</div>
+    </div>
+
+    <div class="section">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Continuous improvement</div>
+          <h2>Improvement log</h2>
+          <p>Every bottleneck found goes here with a measurable result. Example entries:</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Bottleneck</th><th>Root cause</th><th>Fix</th><th>Expected result</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Forecast takes 8 days to close</td><td>Input collected by email in different formats</td><td>One CRM forecast view, fixed calendar, auto reminder on day 2</td><td>Close in 5 days, 100% on time</td><td><span class="tag good">Done</span></td></tr>
+            <tr><td>Many opportunities with past close dates</td><td>No reminder, close date not required to move stage</td><td>Validation rule plus weekly owner list</td><td>Past-due records below 3%</td><td><span class="tag warn">In progress</span></td></tr>
+            <tr><td>Duplicate accounts from tradeshow imports</td><td>Import without matching on domain</td><td>Matching rule on domain and VAT before import</td><td>Duplicates per event below 2%</td><td><span class="tag warn">In progress</span></td></tr>
+            <tr><td>Design-in status only known by FAEs</td><td>FAE notes kept outside the CRM</td><td>Design-in fields on the project, FAE updates in weekly sync</td><td>Design-in stage accurate for top 50 projects</td><td><span class="tag">Planned</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Downloads</div>
+          <h2>Files behind this page</h2>
+        </div>
+      </div>
+      <div class="downloads">
+        <a class="download" href="data/EMEA_Sales_Ops_Toolkit.xlsx" download><span class="icon"><svg><use href="#i-xls"/></svg></span><span><strong>Excel toolkit</strong><span>Data quality formulas, pipeline pivot, forecast accuracy, tradeshow ROI</span></span></a>
+        <a class="download" href="data/opportunities.csv" download><span class="icon"><svg><use href="#i-csv"/></svg></span><span><strong>Demo CRM export</strong><span>246 fictional opportunities, CSV</span></span></a>
+        <a class="download" href="docs/SOP-opportunity-management.md"><span class="icon"><svg><use href="#i-doc"/></svg></span><span><strong>Sample SOP</strong><span>Opportunity management, step by step</span></span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Stefan · EMEA Sales Operations playbook · portfolio project</span>
+    <span>Not affiliated with Quectel. Demo data is fictional.</span>
+  </div>
+</footer>
+
+<div class="tooltip" id="tooltip" role="status"></div>
+<script src="data/data.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
