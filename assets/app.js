@@ -6,13 +6,13 @@
   const fmtInt = (v) => Math.round(v).toLocaleString("en-US");
 
   const STAGES = [
-    ["Lead", 5, "Interest, use case known"],
-    ["Qualified", 10, "Real device project and volume"],
-    ["Sample / Evaluation", 20, "Customer tests our module"],
-    ["Design-in", 40, "Module in the customer design"],
-    ["Design-win", 70, "Customer confirms selection"],
-    ["Pilot", 85, "First production orders"],
-    ["Mass production", 100, "Recurring orders"],
+    ["Lead", 5, "Sales gets a contact or inquiry"],
+    ["Qualified", 10, "Sales confirms a real project, volume and timeline"],
+    ["Sample / Evaluation", 20, "Sales sends samples, customer tests the module"],
+    ["Design-in", 40, "Customer builds our module into their device. Sales quotes and negotiates"],
+    ["Design-win", 70, "Customer picks our module over the competitor. Deal won"],
+    ["Pilot", 85, "First small orders, sales confirms volumes"],
+    ["Mass production", 100, "Regular orders. Revenue is coming in"],
   ];
   document.getElementById("steps").innerHTML = STAGES.map(([n, p, d], i) =>
     `<div class="stp"><span class="p">${p}%</span><strong>${i + 1}. ${n}</strong><span>${d}</span></div>`).join("");
