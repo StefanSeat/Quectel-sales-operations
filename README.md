@@ -11,8 +11,9 @@ One page, built around the job description:
 1. **The role:** CRM and data quality, pipeline and forecast, standards and training, reporting and KPIs
 2. **How I would work:** weekly, monthly and quarterly rhythm
 3. **Examples:** design-in pipeline stages, weekly data quality check, tradeshow follow-up analysis
-4. **Requirements:** each job requirement and where the page shows it
-5. **First 90 days:** learn, standardize, improve
+4. **First 90 days:** learn, standardize, improve
+
+Plus `forecast.html`: interactive forecast tool (amount × probability vs target).
 
 ## Files
 
