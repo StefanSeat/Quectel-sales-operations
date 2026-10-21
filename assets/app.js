@@ -44,7 +44,7 @@
   document.getElementById("shows-body").innerHTML = D.tradeshows.filter((t) => t.leads != null).map((t) =>
     `<tr><td><b>${t.event}</b> <span class="muted small">${t.month}</span></td>
      <td class="r num">${fmtInt(t.leads)}</td><td class="r num">${fmtInt(t.qualified)}</td><td class="r num">${t.opportunities}</td>
-     <td class="r num">€${fmtInt(t.cost_eur / t.qualified)}</td><td class="r num">$${(t.pipeline_usd / t.cost_eur).toFixed(0)}</td></tr>`).join("");
+     <td class="r num">€${fmtInt(t.cost_eur / t.qualified)}</td><td class="r num">€${(t.pipeline_eur / t.cost_eur).toFixed(0)}</td></tr>`).join("");
 
   document.getElementById("n-opps").textContent = OPPS.length;
 })();

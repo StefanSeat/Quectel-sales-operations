@@ -182,15 +182,15 @@ def quarters():
 
 TRADESHOWS = [
     {"event": "Embedded World", "city": "Nuremberg", "month": "Mar 2026", "cost_eur": 92000,
-     "meetings": 148, "leads": 412, "qualified": 131, "opportunities": 38, "pipeline_usd": 9_400_000},
+     "meetings": 148, "leads": 412, "qualified": 131, "opportunities": 38, "pipeline_eur": 9_400_000},
     {"event": "MWC", "city": "Barcelona", "month": "Mar 2026", "cost_eur": 118000,
-     "meetings": 96, "leads": 265, "qualified": 70, "opportunities": 17, "pipeline_usd": 6_100_000},
+     "meetings": 96, "leads": 265, "qualified": 70, "opportunities": 17, "pipeline_eur": 6_100_000},
     {"event": "Hannover Messe", "city": "Hannover", "month": "Apr 2026", "cost_eur": 54000,
-     "meetings": 61, "leads": 188, "qualified": 49, "opportunities": 14, "pipeline_usd": 3_300_000},
+     "meetings": 61, "leads": 188, "qualified": 49, "opportunities": 14, "pipeline_eur": 3_300_000},
     {"event": "IoT Tech Expo Europe", "city": "Amsterdam", "month": "Sep 2026", "cost_eur": 31000,
-     "meetings": 44, "leads": 156, "qualified": 38, "opportunities": 9, "pipeline_usd": 1_700_000},
+     "meetings": 44, "leads": 156, "qualified": 38, "opportunities": 9, "pipeline_eur": 1_700_000},
     {"event": "electronica", "city": "Munich", "month": "Nov 2026", "cost_eur": 86000,
-     "meetings": None, "leads": None, "qualified": None, "opportunities": None, "pipeline_usd": None},
+     "meetings": None, "leads": None, "qualified": None, "opportunities": None, "pipeline_eur": None},
 ]
 
 # Annual revenue targets, set so that pipeline coverage differs per region (some below the 3x rule)
@@ -386,11 +386,11 @@ def write_xlsx(rows):
     # Tradeshows
     ws = wb.create_sheet("Tradeshows")
     ws.append(["Event", "City", "Month", "Cost (EUR)", "Meetings", "Leads", "Qualified", "Opportunities",
-               "Pipeline (USD)", "Lead to qualified %", "Cost per qualified lead", "Pipeline per EUR"])
+               "Pipeline (EUR)", "Lead to qualified %", "Cost per qualified lead", "Pipeline per EUR"])
     style_header(ws, 12)
     for i, t in enumerate(TRADESHOWS, start=2):
         ws.append([t["event"], t["city"], t["month"], t["cost_eur"], t["meetings"], t["leads"],
-                   t["qualified"], t["opportunities"], t["pipeline_usd"],
+                   t["qualified"], t["opportunities"], t["pipeline_eur"],
                    f'=IF(F{i}="","",G{i}/F{i})', f'=IF(G{i}="","",D{i}/G{i})', f'=IF(I{i}="","",I{i}/D{i})'])
         ws.cell(row=i, column=10).number_format = "0.0%"
         ws.cell(row=i, column=11).number_format = '#,##0'
